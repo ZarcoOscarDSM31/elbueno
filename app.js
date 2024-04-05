@@ -12,12 +12,6 @@ app.use(express.json());
 // Middleware para cookies
 app.use(cookieParser());
 
-// Conexión a la base de datos
-mongoose.connect(MONGODB_URI, { // Utiliza MONGODB_URI aquí
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-
 // Rutas de la API
 import authRoutes from "./routes/auth.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
