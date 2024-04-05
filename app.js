@@ -15,11 +15,11 @@ app.use(cookieParser());
 // Rutas de la API
 import authRoutes from "./routes/auth.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
+import sensorRoutes from "./routes/sensors.routes.js"; // Importa las rutas de los sensores
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api", sensorRoutes); // Agrega las rutas de los sensores bajo /api
 
-// Puerto del servidor
-const port = process.env.PORT || 3000;
 
 export default app;

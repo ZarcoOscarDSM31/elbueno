@@ -4,7 +4,6 @@ import { connectDB } from "./db.js";
 
 
 async function main() {
-    console.log(`${FRONTEND_URL}`)
     try {
         await connectDB();
         app.listen(PORT);
