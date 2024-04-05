@@ -19,7 +19,7 @@ import sensorRoutes from "./routes/sensors.routes.js"; // Importa las rutas de l
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
-app.use("/api", sensorRoutes); // Agrega las rutas de los sensores bajo /api
+app.use("/api/sensor", sensorRoutes); // Agrega las rutas de los sensores bajo /api
 
 
 export default app;

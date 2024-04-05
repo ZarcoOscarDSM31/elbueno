@@ -9,10 +9,10 @@ import {
 
 const router = express.Router();
 
-router.get("/sensors", getAllSensors);
-router.post("/sensors", createSensor);
-router.get("/sensors/:id", getSensorById);
-router.put("/sensors/:id", updateSensor);
-router.delete("/sensors/:id", deleteSensor);
+router.get("/getall", getAllSensors);
+router.post("/createSensor", createSensor);
+router.get("/getSensor/:id", getSensorById);
+router.put("/UpdateSensor/:id", updateSensor);
+router.delete("/DeleteSensor/:id", deleteSensor);
 
 export default router;
