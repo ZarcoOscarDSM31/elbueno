@@ -13,15 +13,11 @@ export const auth = (req, res, next) => {
         }
 
         try {
-            jwt.verify(token, TOKEN_SECRET, (err, user) => {
-                if (err) {
-                    return res.status(401).json({ message: "Token de acceso inválido" });
-                }
-                req.user = user;
-                next();
-            });
+            const decoded = jwt.verify(token.split(" ")[1], TOKEN_SECRET);
+            req.user = decoded;
+            next();
         } catch (error) {
-            return res.status(500).json({ message: error.message });
+            return res.status(401).json({ message: "Token de acceso inválido" });
         }
     } catch (error) {
         return res.status(500).json({ message: error.message });

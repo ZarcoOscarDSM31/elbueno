@@ -27,7 +27,7 @@ export const createUser = async (req, res) => {
     const newUser = new User({ username, email, password: hashedPassword, rol });
     await newUser.save();
 
-    res.status(201).json({ message: "Usuario creado exitosamente" });
+    res.status(201).json({ message: "Usuario creado exitosamente", newUser });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error al crear usuario" });
@@ -39,27 +39,48 @@ export const updateUser = async (req, res) => {
     const { id } = req.params;
     const { username, email, password, rol } = req.body;
 
-    // Implementa la lógica para actualizar los detalles del usuario y manejar errores potenciales (e.g., usuario no encontrado, errores de validación, conflicto de correo electrónico)
+    // Verifica si el usuario existe
+    const existingUser = await User.findById(id);
+    if (!existingUser) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
 
-    res.status(200).json({ message: "Usuario actualizado exitosamente" });
+    // Actualiza los campos del usuario
+    existingUser.username = username;
+    existingUser.email = email;
+    existingUser.password = password; // Puedes actualizar la contraseña si es necesario
+    existingUser.rol = rol;
+
+    // Guarda los cambios en la base de datos
+    await existingUser.save();
+
+    res.status(200).json({ message: "Usuario actualizado exitosamente", updatedUser: existingUser });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error al actualizar usuario" });
   }
 };
 
+
 export const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Implementa la lógica para eliminar un usuario y manejar errores potenciales (e.g., usuario no encontrado)
+    // Busca y elimina al usuario por su ID
+    const deletedUser = await User.findByIdAndDelete(id);
 
-    res.status(200).json({ message: "Usuario eliminado exitosamente" });
+    // Verifica si el usuario existe
+    if (!deletedUser) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    res.status(200).json({ message: "Usuario eliminado exitosamente", deletedUser });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error al eliminar usuario" });
   }
 };
+
 
 // Función para obtener un usuario por ID (opcional)
 
