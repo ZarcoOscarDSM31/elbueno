@@ -1,5 +1,5 @@
 import Sensor from '../models/sensor.model.js';
-import { MongoClient } from 'mongodb';
+/* import { MongoClient } from 'mongodb';
 import fetch from 'node-fetch';
 
 const url = 'mongodb://localhost:27017/';
@@ -56,7 +56,7 @@ main();
 
 // Programar la ejecución de la función main() cada 15 minutos
 setInterval(main, 900000); // 15 minutos * 60 segundos/minuto * 1000 milisegun
-
+ */
 export const getAllSensors = async (req, res) => {
     try {
         const sensors = await Sensor.find();
