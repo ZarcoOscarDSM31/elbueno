@@ -1,10 +1,9 @@
-// middlewares/auth.middleware.js
 import jwt from "jsonwebtoken";
 import { TOKEN_SECRET } from "../config.js";
 
 export const auth = (req, res, next) => {
     try {
-        const token = req.headers["authorization"]; // Look for token in authorization header
+        const token = req.headers["authorization"]; 
 
         if (!token) {
             return res

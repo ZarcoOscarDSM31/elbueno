@@ -1,4 +1,3 @@
-// controllers/admin.controllers.js
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 
@@ -39,19 +38,16 @@ export const updateUser = async (req, res) => {
     const { id } = req.params;
     const { username, email, password, rol } = req.body;
 
-    // Verifica si el usuario existe
     const existingUser = await User.findById(id);
     if (!existingUser) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
 
-    // Actualiza los campos del usuario
     existingUser.username = username;
     existingUser.email = email;
-    existingUser.password = password; // Puedes actualizar la contraseña si es necesario
+    existingUser.password = password; 
     existingUser.rol = rol;
 
-    // Guarda los cambios en la base de datos
     await existingUser.save();
 
     res.status(200).json({ message: "Usuario actualizado exitosamente", updatedUser: existingUser });
@@ -66,10 +62,8 @@ export const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Busca y elimina al usuario por su ID
     const deletedUser = await User.findByIdAndDelete(id);
 
-    // Verifica si el usuario existe
     if (!deletedUser) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
@@ -81,8 +75,6 @@ export const deleteUser = async (req, res) => {
   }
 };
 
-
-// Función para obtener un usuario por ID (opcional)
 
 export const getUserById = async (req, res) => {
   try {

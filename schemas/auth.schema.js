@@ -1,4 +1,3 @@
-// schemas/auth.schema.js
 import { Joi } from "express-validation";
 
 const registerSchema = Joi.object({

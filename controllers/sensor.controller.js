@@ -1,6 +1,5 @@
 import Sensor from '../models/sensor.model.js';
 
-// Controlador para obtener todos los sensores
 export const getAllSensors = async (req, res) => {
     try {
         const sensors = await Sensor.find();
@@ -10,7 +9,6 @@ export const getAllSensors = async (req, res) => {
     }
 };
 
-// Controlador para crear un nuevo sensor
 export const createSensor = async (req, res) => {
     const sensor = new Sensor(req.body);
     try {
@@ -21,7 +19,6 @@ export const createSensor = async (req, res) => {
     }
 };
 
-// Controlador para obtener un sensor por su ID
 export const getSensorById = async (req, res) => {
     try {
         const sensor = await Sensor.findById(req.params.id);
@@ -34,7 +31,6 @@ export const getSensorById = async (req, res) => {
     }
 };
 
-// Controlador para actualizar un sensor por su ID
 export const updateSensor = async (req, res) => {
     try {
         const sensor = await Sensor.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -47,7 +43,6 @@ export const updateSensor = async (req, res) => {
     }
 };
 
-// Controlador para eliminar un sensor por su ID
 export const deleteSensor = async (req, res) => {
     try {
         const sensor = await Sensor.findByIdAndDelete(req.params.id);

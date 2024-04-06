@@ -71,13 +71,12 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
     try {
-        // Eliminar el token de acceso del usuario
         const token = req.headers["authorization"];
         if (!token) {
             return res.status(401).json({ message: "No se proporcionó un token de acceso" });
         }
 
-        removeAccessToken(token); // Implementa esta función en tu archivo libs/jwt.js para eliminar el token
+        removeAccessToken(token);
 
         res.status(200).json({ message: "Cerrar sesión exitoso" });
     } catch (error) {

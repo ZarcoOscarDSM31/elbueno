@@ -1,4 +1,3 @@
-// routes/admin.routes.js
 import express from "express";
 import { getUsers, createUser, updateUser, deleteUser } from "../controllers/admin.controller.js";
 import { auth, verifyAdmin } from "../middlewares/auth.middleware.js";

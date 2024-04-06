@@ -1,4 +1,3 @@
-// routes/auth.routes.js
 import express from "express";
 import { register, login, logout } from "../controllers/auth.controller.js";
 import { validateSchema } from "../middlewares/validator.middleware.js";
