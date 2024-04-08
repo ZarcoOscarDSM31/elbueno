@@ -14,4 +14,4 @@ async function main() {
     };
 };
 
-main();
+main(); // Llama a la función principal
